@@ -54,7 +54,7 @@
             d3.json("/data/publication_network_AW.json").then(data =>{
                 
                 const gCanvas = svg.append("g")
-                    //.attr("class", "canvas")
+                    .attr("class", "canvas")
                 
                 let numPapers = {};
                 data.nodes.forEach((d, i) => numPapers[i] = d.NumberOfPapers)
@@ -73,8 +73,6 @@
                 const linkVals = data.links.map(d => {
                     return d.weight
                 })
-
-                console.log(linkVals)
 
                 const strokeScale = d3.scaleLinear()
                     .domain(d3.extent(linkVals, d => d))
