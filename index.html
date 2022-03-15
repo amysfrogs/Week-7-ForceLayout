@@ -76,7 +76,7 @@
 
                 const strokeScale = d3.scaleLinear()
                     .domain(d3.extent(linkVals, d => d))
-                    .range([0.2, 15])
+                    .range([0.5, 15])
 
                 const colorScale = d3.scaleSequential()
                     .interpolator(d3.interpolateCool)
@@ -115,12 +115,12 @@
                 .force('center', d3.forceCenter(width/2, height/2))
                 .force('links', d3.forceLink(data.links)
                     .distance(d => (d.weight * 5))
-                    .strength(0.1)
+                    .strength(0.2)
                     .id(function(n) {return n.id;}))
                 .force('collide', d3.forceCollide()
                     .radius((d, i) => radiusScale(numPapers[i]) * 2.5)
                     .iterations(5))
-                .force('charge', d3.forceManyBody().strength(-30))
+                .force('charge', d3.forceManyBody().strength(-40))
                 .on('tick', update)
             
             function update() {
